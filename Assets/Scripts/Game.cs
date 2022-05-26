@@ -6,6 +6,7 @@ using TMPro;
 public class Game : MonoBehaviour
 {
     public TMP_Text TxtScore;
+    public TMP_Text TxtHighScore;
 
     int score = 0;
 
@@ -18,5 +19,17 @@ public class Game : MonoBehaviour
     {
         score++;
         TxtScore.SetText(score.ToString());
+    }
+
+    public void Save()
+    {
+        PlayerPrefs.SetInt("score", score);
+    }
+
+    public void Load()
+    {
+        int tempScore = PlayerPrefs.GetInt("score");
+
+        TxtHighScore.SetText(tempScore.ToString());
     }
 }
